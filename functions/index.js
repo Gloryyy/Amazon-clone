@@ -2,8 +2,11 @@ const functions = require("firebase-functions");
 const express = require("express");
 const cors = require("cors");
 const stripe = require("stripe")(
-  "sk_test_51HYfQGCjkfiKA7UUxcl6QvG8aZ9163CWLqux60fF7hw9xWGRIVh9B4rWKYoqKT9mfL1bzYI52DAK7cXzue6T5A3l00BEmp5mc7"
+  "sk_test_51HaREVFRSp2HdY4HA4TV35FHYmR0P7mme0Rr4QXo3mFJfQL6zwPvmYEkBagLtFFOm6Jpvdn8NYqvragtAD07A2oh00amziCrg2"
 );
+// "pk_test_51HYfQGCjkfiKA7UUrdV8s099CZWHh0GSeHCQ0ZeZ8c4R4UqBwbMoD12NRHayHi2E9f8NgvH39cJRMHb5YDW5ENQI00CJlwbyI0"
+// "sk_test_51HYfQGCjkfiKA7UUxcl6QvG8aZ9163CWLqux60fF7hw9xWGRIVh9B4rWKYoqKT9mfL1bzYI52DAK7cXzue6T5A3l00BEmp5mc7"
+
 // API
 
 // - App config
@@ -23,7 +26,7 @@ app.post("/payments/create", async (request, response) => {
 
   const paymentIntent = await stripe.paymentIntents.create({
     amount: total, // subunits of the currency
-    currency: "euro",
+    currency: "usd",
   });
 
   // OK - Created
