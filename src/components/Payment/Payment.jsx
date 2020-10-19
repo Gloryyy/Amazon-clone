@@ -6,7 +6,7 @@ import { Link, useHistory } from "react-router-dom";
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import CurrencyFormat from "react-currency-format";
 import { getBasketTotal } from "../Context_API/reducer";
-import axios from "axios";
+import axios from "../../axios";
 import { db } from "../../firebase";
 
 function Payment() {
@@ -52,9 +52,9 @@ function Payment() {
       .then(({ paymentIntent }) => {
         // paymentIntent = payment confirmation
         db.collection("users")
-          .doc(user?.uid)
+          .doc("" + user?.uid)
           .collection("orders")
-          .doc(paymentIntent.id)
+          .doc("" + paymentIntent.id)
           .set({
             basket: basket,
             amount: paymentIntent.amount,
